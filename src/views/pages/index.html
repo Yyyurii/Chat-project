@@ -1,26 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   {% include '../partials/head.html' %}
 </head>
-<body>
-  <div class="container">
-    <div class="container__chatWindow">
-      <div class="container__chatWindow__usersWindow">
-        <form>
-          <p><input class="container__chatWindow__usersWindow__input" stype="text" placeholder="Search.."></p>
-        </form>
-      </div>
-      <div class="container__chatWindow__massageWindow">
-        <div class="container__chatWindow__massageWindow__boardWindow">
 
+<body>
+  <div class="wrapper">
+    <div class="chatWindow">
+      <div class="usersSidebar">
+        <div class="usersSidebar__inputBox">
+          <input class="usersSidebar__inputBox__input" type="search" placeholder="Search..">
         </div>
-        <div class="container__chatWindow__massageWindow__inputWindow">
-          <textarea type="text" class="container__chatWindow__massageWindow__inputWindow__textarea" placeholder="Type some masagge here.."></textarea>
-          <button class="container__chatWindow__massageWindow__inputWindow__button"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSfTqqZTpc-l-BI8Qyt0oinSnbbuZmt7FMb0N3CiaJcXntiyj3M&usqp=CAU" alt="sendIcon" class="sendIcon"></button>
+        <div class="usersSidebar__users">
+          <div class="usersSidebar__user1 users">
+            <img class="usersSidebar__user1__image usersImage" src="images/sparrow.jpg" alt="">
+            <span class="usersSidebar__user1__name usersName">Captain Jack Sparrow</span>
+          </div>
+          <div class="usersSidebar__user2 users">
+            <img class="usersSidebar__user2__image usersImage" src="images/darthVader.png" alt="">
+            <span class="usersSidebar__user2__nameusersName">Darth Vader</span>
+          </div>
+          <div class="usersSidebar__user3 users">
+            <img class="usersSidebar__user3__image usersImage" src="images/chendler.png" alt="">
+            <span class="usersSidebar__user3__name usersName">Chandler Bing</span>
+          </div>
+          <div class="usersSidebar__user4 users">
+            <img class="usersSidebar__user4__image usersImage" src="images/chewbacca.png" alt="">
+            <span class="usersSidebar__user4__name usersName">Chewbacca</span>
+          </div>
+          <div class="usersSidebar__user5 users">
+            <img class="usersSidebar__user5__image usersImage" src="images/Eminem.png" alt="">
+            <span class="usersSidebar__user5__name usersName">Marshall Mathers</span>
+          </div>
+          <div class="usersSidebar__user6 users">
+            <img class="usersSidebar__user6__image usersImage" src="images/groot.png" alt="">
+            <span class="usersSidebar__user6__name usersName">I am Groot</span>
+          </div>
+          <div class="usersSidebar__user7 users">
+            <img class="usersSidebar__user7__image usersImage" src="images/harryPotter.png" alt="">
+            <span class="usersSidebar__user7__name usersName">Harry Potter</span>
+          </div>
+          <div class="usersSidebar__user8 users">
+            <img class="usersSidebar__user8__image usersImage" src="images/mrBean.ng.jpg" alt="">
+            <span class="usersSidebar__user8__name usersName">Mr. Bean</span>
+          </div>
+          <div class="usersSidebar__user9 users">
+            <img class="usersSidebar__user9__image usersImage" src="images/hulk.png" alt="">
+            <span class="usersSidebar__user9__name usersName">Hulk</span>
+          </div>
+        </div>
+      </div>
+      <div class="massageWindow">
+        <div class="massageWindow__border"></div>
+        <div class="massageWindow__entryField">
+          <textarea type="text" class="massageWindow__entryField__textarea"
+            placeholder="Type some masagge here.."></textarea>
+          <button class="massageWindow__entryField__button"><img src="images/sendIcon.png" alt="sendIcon"
+              class="sendIcon"></button>
         </div>
       </div>
     </div>
-</div>
+  </div>
 </body>
+
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container">
+  <div class="container__chatWindow">
+    <div class="container__chatWindow__usersWindow">
+      <div>
+        <input class="container__chatWindow__usersWindow__input" stype="text" placeholder="Search.."></input>
+      </div>
+    </div>
+    <div class="container__chatWindow__massageWindow">
+      <div class="container__chatWindow__massageWindow__boardWindow">
+
+      </div>
+      <div class="container__chatWindow__massageWindow__inputWindow">
+        <textarea type="text" class="container__chatWindow__massageWindow__inputWindow__textarea" placeholder="Type some masagge here.."></textarea>
+        <button class="container__chatWindow__massageWindow__inputWindow__button"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSfTqqZTpc-l-BI8Qyt0oinSnbbuZmt7FMb0N3CiaJcXntiyj3M&usqp=CAU" alt="sendIcon" class="sendIcon"></button>
+      </div>
+    </div>
+  </div> -->

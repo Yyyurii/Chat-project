@@ -49,53 +49,111 @@ img {
     }
 
 //=====================================================================//
-
-.container {
-    background-color: #F4D5DB;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 1000px;
+::-webkit-scrollbar { 
+    width: 0px;
 }
-.container__chatWindow {
-    width: 900px;
+.wrapper {
+    height: 100vh;
+    background-color: #DDA0DD;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chatWindow {
+    background-color: #fff;
+    width: 950px;
     height: 600px;
-    background-color: #C6C3C5;
-    margin: auto;
     border-radius: 10px;
     display: flex;
+}
+.usersSidebar {
+    background-color: #F3F4F5;;
+    width: 300px;
+    border: 1px solid;
+    border-radius: 10px;
+    border-right: none;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 
-        &__usersWindow {
-            background-color: #92898E;
-            flex: 3 7;
+        &__inputBox {
+            width: 100%;
+            margin-bottom: 17px;
 
                 &__input {
-                    
-                }    
-        }    
-        &__massageWindow {
-            background-color: #8B7682;
-            flex: 7 3;
-            flex-direction: column;
-            display: flex;
-
-                &__boardWindow{
-                flex: 9 2; 
-                background-color: #F7F2CB;
-                }  
-                &__inputWindow {
-                    flex: 2 9;
-                    background-color: #C4C2B2;
-                    display: flex;
-
-                    &__textarea {
-                        width: 100%;
-                        margin: 30px 15px;
-                    }
-                    &__button {
-                        width: 10px;
-                        height: 10px;
-                    }
+                    background-color: #fff;
+                    width: 100%;
+                    border-radius: 5px;
+                    font-size: 14px;
+                    padding: 6px;
+                    // background: url(images/searchIcon.png) no-repeat;
+                    background-position: 0 50%;
                 }
-        }                
+        }        
+}
+
+.usersSidebar__users {
+    overflow: auto;  
+}
+
+.usersSidebar__users :hover {
+    background: #1E90FF; 
+    color: #fff;}
+
+.users {
+    display: flex;
+    align-items: center;
+    padding: 6px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.usersImage{
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 6px;
+}
+
+.usersName {
+    font-size: 18px;
+}
+.massageWindow {
+    width: 650px;
+    border: 1px solid;
+    border-radius: 10px;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+
+        &__border {
+            height: 508px;
+        } 
+        &__entryField {
+            height: 90px;
+            display: flex;
+            align-items: center;
+            border-top: 1px solid;
+
+                &__textarea {
+                    border-radius: 5px;
+                    width: 100%;
+                    margin-left: 15px;
+                    padding: 15px 0px 5px 10px;
+                    font-size: 14px;
+                }
+                &__button {
+                    width: 56px;
+                    height: 56px;
+                    margin: 15px;
+                    padding-top: 5px;
+                    border: none;
+                    background-color: #fff;
+                }
+        }
 }
