@@ -1,57 +1,163 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
 }
+
 body {
-	line-height: 1;
+    line-height: 1;
 }
-ol, ul {
-	list-style: none;
+
+ol,
+ul {
+    list-style: none;
 }
-blockquote, q {
-	quotes: none;
+
+blockquote,
+q {
+    quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
 }
+
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
+
 img {
     max-width: 100%;
-    }
-    * {
+}
+
+* {
     box-sizing: border-box;
-    }
+}
 
 //=====================================================================//
-::-webkit-scrollbar { 
-    width: 0px;
+::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
 }
+
+::-webkit-scrollbar
+{
+	width: 5px;
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+}
+
 .wrapper {
     height: 100vh;
     background-color: #DDA0DD;
@@ -60,15 +166,16 @@ img {
     justify-content: center;
 }
 
-.chatWindow {
+.chat-window {
     background-color: #fff;
     width: 950px;
     height: 600px;
     border-radius: 10px;
     display: flex;
 }
-.usersSidebar {
-    background-color: #F3F4F5;;
+
+.users-sidebar {
+    background-color: #F3F4F5;
     width: 300px;
     border: 1px solid;
     border-radius: 10px;
@@ -82,29 +189,33 @@ img {
     flex-direction: column;
     justify-content: flex-start;
 
-        &__inputBox {
-            width: 100%;
-            margin-bottom: 17px;
+    &__input-box {
+        width: 100%;
+        margin-bottom: 17px;
+    }
 
-                &__input {
-                    background-color: #fff;
-                    width: 100%;
-                    border-radius: 5px;
-                    font-size: 14px;
-                    padding: 6px;
-                    // background: url(images/searchIcon.png) no-repeat;
-                    background-position: 0 50%;
-                }
-        }        
+    &__input {
+        background-color: #fff;
+        width: 100%;
+        border-radius: 5px;
+        font-size: 14px;
+        padding: 6px;
+        background: url(../images/searchIcon.png) no-repeat;
+        background-position: 2% 50%;
+        background-size: 15px 15px;
+        padding-left: 25px;
+    }
 }
 
-.usersSidebar__users {
-    overflow: auto;  
+.users-sidebar__users {
+    overflow: auto;
+    padding-right: 5px;
 }
 
-.usersSidebar__users :hover {
-    background: #1E90FF; 
-    color: #fff;}
+.users-sidebar__users :hover {
+    background: #1E90FF;
+    color: #fff;
+}
 
 .users {
     display: flex;
@@ -114,46 +225,102 @@ img {
     margin-top: 10px;
 }
 
-.usersImage{
+.users-image {
     width: 50px;
     height: 50px;
     margin-right: 10px;
     border-radius: 6px;
 }
 
-.usersName {
+.users-name {
     font-size: 18px;
 }
-.massageWindow {
+
+.massage-window {
     width: 650px;
     border: 1px solid;
     border-radius: 10px;
     border-bottom-left-radius: 0px;
     border-top-left-radius: 0px;
 
-        &__border {
-            height: 508px;
-        } 
-        &__entryField {
-            height: 90px;
-            display: flex;
-            align-items: center;
-            border-top: 1px solid;
+    &__border {
+        height: 508px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 20px;
+    }
 
-                &__textarea {
-                    border-radius: 5px;
-                    width: 100%;
-                    margin-left: 15px;
-                    padding: 15px 0px 5px 10px;
-                    font-size: 14px;
-                }
-                &__button {
-                    width: 56px;
-                    height: 56px;
-                    margin: 15px;
-                    padding-top: 5px;
-                    border: none;
-                    background-color: #fff;
-                }
-        }
+    &__entry-field {
+        height: 90px;
+        display: flex;
+        align-items: center;
+        border-top: 1px solid;
+    }
+
+    &__textarea {
+        border-radius: 5px;
+        width: 100%;
+        margin-left: 15px;
+        padding: 15px 0px 5px 10px;
+        font-size: 14px;
+        resize: none;
+    }
+
+    &__button {
+        width: 56px;
+        height: 56px;
+        margin: 15px;
+        padding-top: 5px;
+        border: none;
+        background-color: #fff;
+    }
+    
+    &__I-am-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__my-massage-container {
+        width: 100%;
+        background-color: #5369FC;
+        color: white;
+        height: 65px;
+        padding: 8px;
+        border-radius: 5px;
+        margin-left: 85px;
+    }
+
+    &__my-image{
+        width: 65px;
+        height: 65px;
+        border-radius: 6px;
+        margin-left: 20px;
+    }
+
+    &__companion-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-right: 85px;
+        margin-bottom: 15px;
+    }
+
+    &__companion-massage-container {
+        width: 100%;
+        background-color: #5369FC;
+        color: white;
+        height: 65px;
+        padding: 8px;
+        border-radius: 5px;
+    }
+
+    &__companion-image{
+        width: 65px;
+        height: 65px;
+        border-radius: 6px;
+        margin-right: 20px;
+    }
 }
+

@@ -7,61 +7,76 @@
 
 <body>
   <div class="wrapper">
-    <div class="chatWindow">
-      <div class="usersSidebar">
-        <div class="usersSidebar__inputBox">
-          <input class="usersSidebar__inputBox__input" type="search" placeholder="Search..">
+    <div class="chat-window">
+      <div class="users-sidebar">
+        <div class="users-sidebar__input-box">
+          <input class="users-sidebar__input" type="search" placeholder="Search..">
         </div>
-        <div class="usersSidebar__users">
-          <div class="usersSidebar__user1 users">
-            <img class="usersSidebar__user1__image usersImage" src="images/sparrow.jpg" alt="">
-            <span class="usersSidebar__user1__name usersName">Captain Jack Sparrow</span>
+        <div class="users-sidebar__users">
+          <div class="users" id="Captain Jack Sparrow">
+            <img class="users-image" src="images/sparrow.jpg" alt="">
+            <span class="users-name">Captain Jack Sparrow</span>
           </div>
-          <div class="usersSidebar__user2 users">
-            <img class="usersSidebar__user2__image usersImage" src="images/darthVader.png" alt="">
-            <span class="usersSidebar__user2__nameusersName">Darth Vader</span>
+          <div class="users" id="Darth Vader">
+            <img class="users-image" src="images/darthVader.png" alt="">
+            <span class="users-name">Darth Vader</span>
           </div>
-          <div class="usersSidebar__user3 users">
-            <img class="usersSidebar__user3__image usersImage" src="images/chendler.png" alt="">
-            <span class="usersSidebar__user3__name usersName">Chandler Bing</span>
+          <div class="users" id="Chandler Bing">
+            <img class="users-image" src="images/chendler.png" alt="">
+            <span class="users-name">Chandler Bing</span>
           </div>
-          <div class="usersSidebar__user4 users">
-            <img class="usersSidebar__user4__image usersImage" src="images/chewbacca.png" alt="">
-            <span class="usersSidebar__user4__name usersName">Chewbacca</span>
+          <div class="users" id="Chewbacca">
+            <img class="users-image" src="images/chewbacca.png" alt="">
+            <span class="users-name">Chewbacca</span>
           </div>
-          <div class="usersSidebar__user5 users">
-            <img class="usersSidebar__user5__image usersImage" src="images/Eminem.png" alt="">
-            <span class="usersSidebar__user5__name usersName">Marshall Mathers</span>
+          <div class="users" id="Marshall Mathers">
+            <img class="users-image" src="images/Eminem.png" alt="">
+            <span class="users-name">Marshall Mathers</span>
           </div>
-          <div class="usersSidebar__user6 users">
-            <img class="usersSidebar__user6__image usersImage" src="images/groot.png" alt="">
-            <span class="usersSidebar__user6__name usersName">I am Groot</span>
+          <div class="users" id="I am Groot">
+            <img class="users-image" src="images/groot.png" alt="">
+            <span class="users-name">I am Groot</span>
           </div>
-          <div class="usersSidebar__user7 users">
-            <img class="usersSidebar__user7__image usersImage" src="images/harryPotter.png" alt="">
-            <span class="usersSidebar__user7__name usersName">Harry Potter</span>
+          <div class="users" id="Harry Potter">
+            <img class="users-image" src="images/harryPotter.png" alt="">
+            <span class="users-name">Harry Potter</span>
           </div>
-          <div class="usersSidebar__user8 users">
-            <img class="usersSidebar__user8__image usersImage" src="images/mrBean.ng.jpg" alt="">
-            <span class="usersSidebar__user8__name usersName">Mr. Bean</span>
+          <div class="users">
+            <img class="users-image" src="images/mrBean.ng.jpg" alt="">
+            <span class="users-name">Mr. Bean</span>
           </div>
-          <div class="usersSidebar__user9 users">
-            <img class="usersSidebar__user9__image usersImage" src="images/hulk.png" alt="">
-            <span class="usersSidebar__user9__name usersName">Hulk</span>
+          <div class="users">
+            <img class="users-image" src="images/hulk.png" alt="">
+            <span class="users-name">Hulk</span>
           </div>
         </div>
       </div>
-      <div class="massageWindow">
-        <div class="massageWindow__border"></div>
-        <div class="massageWindow__entryField">
-          <textarea type="text" class="massageWindow__entryField__textarea"
-            placeholder="Type some masagge here.."></textarea>
-          <button class="massageWindow__entryField__button"><img src="images/sendIcon.png" alt="sendIcon"
-              class="sendIcon"></button>
+      <div class="massage-window">
+        <div class="massage-window__border">
+          <div class="massage-window__companion-container">
+            <img class="massage-window__companion-image" src="images/darthVader.png" alt="">
+            <div class="massage-window__companion-massage-container">
+              <span class="massage-window__companion-massage-text">
+                Come to the dark side we have cookies... and scissors</span>
+            </div>
+          </div>
+          <div class="massage-window__I-am-container">
+            <div class="massage-window__my-massage-container">
+              <span class="massage-window__my-massage-text">
+                Guys, I'm with you</span>
+            </div>
+            <img class="massage-window__my-image" src="images/myImage.png" alt="">
+          </div>
+        </div>
+        <div class="massage-window__entry-field">
+          <textarea type="text" class="massage-window__textarea" placeholder="Type some masagge here.."></textarea>
+          <button class="massage-window__button"><img src="images/sendIcon.png" alt="sendIcon"
+              class="send-icon"></button>
         </div>
       </div>
     </div>
   </div>
+  <script src="js/index.min.js"></script>
 </body>
 
 </html>
