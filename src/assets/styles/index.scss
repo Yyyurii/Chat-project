@@ -290,6 +290,7 @@ img {
         padding: 8px;
         border-radius: 5px;
         margin-left: 85px;
+      
     }
 
     &__my-image{
@@ -297,6 +298,7 @@ img {
         height: 65px;
         border-radius: 6px;
         margin-left: 20px;
+        
     }
 
     &__companion-container {
@@ -324,3 +326,19 @@ img {
     }
 }
 
+// .arrow-right {
+//     width: 0; 
+//     height: 0; 
+//     border-top: 60px solid transparent;
+//     border-bottom: 60px solid transparent;
+    
+//     border-left: 60px solid green;
+//   }
+.massage-window__my-massage-container ::after {
+    width: 0; 
+    height: 0; 
+    border-top: 60px solid transparent;
+    border-bottom: 60px solid transparent;
+    
+    border-left: 60px solid green;
+  }
