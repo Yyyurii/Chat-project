@@ -140,7 +140,7 @@ img {
 //=====================================================================//
 ::-webkit-scrollbar-track
 {
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 	border-radius: 10px;
 	background-color: #F5F5F5;
 }
@@ -154,7 +154,7 @@ img {
 ::-webkit-scrollbar-thumb
 {
 	border-radius: 10px;
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	background-color: #555;
 }
 
@@ -212,10 +212,10 @@ img {
     padding-right: 5px;
 }
 
-.users-sidebar__users :hover {
-    background: #1E90FF;
-    color: #fff;
-}
+// .users-sidebar__users:hover {
+//     background: #1E90FF;
+//     color: #fff;
+// }
 
 .users {
     display: flex;
@@ -223,6 +223,10 @@ img {
     padding: 6px;
     border-radius: 5px;
     margin-top: 10px;
+    &:hover {
+        background: #1E90FF;
+        color: #fff;
+    }
 }
 
 .users-image {
@@ -249,6 +253,7 @@ img {
         flex-direction: column;
         justify-content: flex-end;
         padding: 20px;
+        overflow: auto;
     }
 
     &__entry-field {
@@ -280,25 +285,25 @@ img {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        position: relative;
     }
 
     &__my-massage-container {
         width: 100%;
         background-color: #5369FC;
         color: white;
-        height: 65px;
+        min-height: 65px;
         padding: 8px;
         border-radius: 5px;
         margin-left: 85px;
-      
+        // position: relative;
     }
 
     &__my-image{
         width: 65px;
         height: 65px;
         border-radius: 6px;
-        margin-left: 20px;
-        
+        margin-left: 20px;    
     }
 
     &__companion-container {
@@ -333,12 +338,20 @@ img {
 //     border-bottom: 60px solid transparent;
     
 //     border-left: 60px solid green;
+
+   // position: absolute;
+    // top: 0;
+    // bottom: 0;
+    // margin: 0;
 //   }
-.massage-window__my-massage-container ::after {
+.massage-window__my-massage-container:after {
+    content: '';
     width: 0; 
     height: 0; 
-    border-top: 60px solid transparent;
-    border-bottom: 60px solid transparent;
-    
-    border-left: 60px solid green;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #5369fc;
+    right: 75px;
+    position: absolute;
+    bottom: 22px;
   }
