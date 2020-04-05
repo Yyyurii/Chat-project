@@ -2,8 +2,10 @@ import $ from 'jquery';
 
 $(document).ready(function onDocumentReady() {
 
-    // Змінює фон при кліку
     var $users = $('.users');
+    $users.eq(0).addClass('active'); 
+
+    // Змінює фон при кліку 
     $users.on('click', function () {
         $(this).addClass('active');
         $users.not(this).removeClass('active');
@@ -17,7 +19,7 @@ $(document).ready(function onDocumentReady() {
     });
 
     // Search
-    var $input =  $('input');
+    var $input = $('input');
     $input.on('input', function () {
         var $inptuVal = $input.val();
         console.log($input.val());
@@ -36,15 +38,19 @@ $(document).ready(function onDocumentReady() {
 
     // Відправляє смс 
     var $textArea = $('textarea');
-    $textArea.change('input', function () {
-        var $textareaVal = $textArea.val();
-        console.log($textArea.val());
-        $('button').on('click', function () {
-            var pattern = $('<div class="massage-window__I-am-container"><div class="massage-window__my-massage-container "><span class="massage-window__my-massage-text">' + $textareaVal + '</span></div><img class="massage-window__my-image" src="images/myImage.png" alt=""></div>');
-            $('.massage-window__border').append(pattern);
-            $textArea.val('');            
-        });
+    var $massageBorder = $('.massage-window__border');
+    $('button').on('click', function () {
+        var textareaVal = $textArea.val();
+        var reverseMassage = textareaVal.split("").reverse().join("");
 
+        if (textareaVal) {
+
+            var myPattern = $('<div class="massage-window__I-am-container"><div class="massage-window__my-massage-container "><span class="massage-window__my-massage-text">' + textareaVal + '</span></div><img class="massage-window__my-image" src="images/myImage.png" alt=""></div>');
+            var companionPatern = $('<div class="massage-window__companion-container"><img class="massage-window__companion-image" src="images/darthVader.png" alt=""><div class="massage-window__companion-massage-container"><span class="massage-window__companion-massage-text">'+ reverseMassage +'</span></div></div>');
+            $massageBorder.prepend(myPattern);
+            $massageBorder.prepend(companionPatern);
+            $textArea.val('');
+        }
     });
 
 

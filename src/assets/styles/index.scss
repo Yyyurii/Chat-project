@@ -249,9 +249,9 @@ img {
     &__border {
         height: 508px;
         display: flex;
-        flex-direction: column;
-        // flex-direction: column-reverse;
-        justify-content: flex-end;
+        // flex-direction: column;
+        flex-direction: column-reverse;
+        // justify-content: flex-end;
         padding: 20px;
         overflow: auto;
     }
@@ -312,13 +312,15 @@ img {
         justify-content: space-between;
         margin-right: 85px;
         margin-bottom: 15px;
+        position: relative;
+
     }
 
     &__companion-massage-container {
         width: 100%;
-        background-color: #5369FC;
+        background-color: #EE8E8E;
         color: white;
-        height: 65px;
+        min-height: 65px;
         padding: 8px;
         border-radius: 5px;
     }
@@ -343,4 +345,15 @@ img {
     bottom: 0;
     top:0;
     margin: auto;
+  }
+  .massage-window__companion-container:before {
+    content: '';
+    width: 0; 
+    height: 0; 
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid #EE8E8E;
+    position: absolute;
+    margin: auto;
+    left: 75px;
   }
