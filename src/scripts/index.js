@@ -3,22 +3,25 @@ import $ from 'jquery';
 $(document).ready(function onDocumentReady() {
 
     // Змінює фон при кліку
-    $('.users').on('click', function () {
-        $(this).css({ 'backgroundColor': '#8688F0', 'color': 'white' });
-        $('.users').not(this).css({ 'backgroundColor': '', 'color': '' });
+    var $users = $('.users');
+    $users.on('click', function () {
+        $(this).addClass('active');
+        $users.not(this).removeClass('active');
     });
 
     // Нумерація юзерів
-    $('.users-name').each(function (i) {
+    var $usersNames = $('.users-name');
+    $usersNames.each(function (i) {
         var number = i + 1 + '. ';
         $(this).prepend(number);
     });
 
     // Search
-    $('input').on('input', function () {
-        var $inptuVal = $('input').val();
-        console.log($('input').val());
-        $('.users-name').each(function (index, element) {
+    var $input =  $('input');
+    $input.on('input', function () {
+        var $inptuVal = $input.val();
+        console.log($input.val());
+        $usersNames.each(function (index, element) {
             var $element = $(element);
             var $elementName = $element.text(); // names of users
             var $parent = $element.closest('.users');
@@ -32,19 +35,17 @@ $(document).ready(function onDocumentReady() {
     });
 
     // Відправляє смс 
+    var $textArea = $('textarea');
+    $textArea.change('input', function () {
+        var $textareaVal = $textArea.val();
+        console.log($textArea.val());
+        $('button').on('click', function () {
+            var pattern = $('<div class="massage-window__I-am-container"><div class="massage-window__my-massage-container "><span class="massage-window__my-massage-text">' + $textareaVal + '</span></div><img class="massage-window__my-image" src="images/myImage.png" alt=""></div>');
+            $('.massage-window__border').append(pattern);
+            $textArea.val('');            
+        });
 
-    // var myMassage = $('.massage-window__my-massage-text');
-    // var myMassageText = myMassage.text();
-    // console.log(myMassageText);
-   
-    // $('textarea').on('textarea', function () {
-    //     var $inptuVal = $('textarea').val();
-    //     console.log($('textarea').text());
-    // });
-    
-    // myMassageText.each(function(){
-    //     (this).html($textAreaVal);
-    // });
+    });
 
 
 
@@ -62,9 +63,6 @@ $(document).ready(function onDocumentReady() {
 
 
 
-
-
-  
 
 
 

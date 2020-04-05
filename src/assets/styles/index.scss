@@ -212,11 +212,6 @@ img {
     padding-right: 5px;
 }
 
-// .users-sidebar__users:hover {
-//     background: #1E90FF;
-//     color: #fff;
-// }
-
 .users {
     display: flex;
     align-items: center;
@@ -226,6 +221,10 @@ img {
     &:hover {
         background: #1E90FF;
         color: #fff;
+    }
+    &.active { 
+        background-color: #8688F0;
+        color: white;
     }
 }
 
@@ -251,6 +250,7 @@ img {
         height: 508px;
         display: flex;
         flex-direction: column;
+        // flex-direction: column-reverse;
         justify-content: flex-end;
         padding: 20px;
         overflow: auto;
@@ -286,6 +286,7 @@ img {
         align-items: center;
         justify-content: space-between;
         position: relative;
+        margin-bottom: 15px;
     }
 
     &__my-massage-container {
@@ -296,7 +297,6 @@ img {
         padding: 8px;
         border-radius: 5px;
         margin-left: 85px;
-        // position: relative;
     }
 
     &__my-image{
@@ -331,19 +331,6 @@ img {
     }
 }
 
-// .arrow-right {
-//     width: 0; 
-//     height: 0; 
-//     border-top: 60px solid transparent;
-//     border-bottom: 60px solid transparent;
-    
-//     border-left: 60px solid green;
-
-   // position: absolute;
-    // top: 0;
-    // bottom: 0;
-    // margin: 0;
-//   }
 .massage-window__my-massage-container:after {
     content: '';
     width: 0; 
@@ -353,5 +340,7 @@ img {
     border-left: 10px solid #5369fc;
     right: 75px;
     position: absolute;
-    bottom: 22px;
+    bottom: 0;
+    top:0;
+    margin: auto;
   }
