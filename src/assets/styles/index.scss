@@ -239,7 +239,7 @@ img {
     font-size: 18px;
 }
 
-.massage-window {
+.message-window {
     width: 650px;
     border: 1px solid;
     border-radius: 10px;
@@ -289,7 +289,7 @@ img {
         margin-bottom: 15px;
     }
 
-    &__my-massage-container {
+    &__my-message-container {
         width: 100%;
         background-color: #5369FC;
         color: white;
@@ -297,6 +297,7 @@ img {
         padding: 8px;
         border-radius: 5px;
         margin-left: 85px;
+        order:0;
     }
 
     &__my-image{
@@ -304,6 +305,7 @@ img {
         height: 65px;
         border-radius: 6px;
         margin-left: 20px;    
+        order:1;
     }
 
     &__companion-container {
@@ -316,13 +318,14 @@ img {
 
     }
 
-    &__companion-massage-container {
+    &__companion-message-container {
         width: 100%;
         background-color: #EE8E8E;
         color: white;
         min-height: 65px;
         padding: 8px;
         border-radius: 5px;
+        order:1;
     }
 
     &__companion-image{
@@ -330,10 +333,11 @@ img {
         height: 65px;
         border-radius: 6px;
         margin-right: 20px;
+        order:0;
     }
 }
 
-.massage-window__my-massage-container:after {
+.message-window__my-message-container:after {
     content: '';
     width: 0; 
     height: 0; 
@@ -346,7 +350,7 @@ img {
     top:0;
     margin: auto;
   }
-  .massage-window__companion-container:before {
+  .message-window__companion-container:before {
     content: '';
     width: 0; 
     height: 0; 

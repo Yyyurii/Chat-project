@@ -3,7 +3,7 @@ import $ from 'jquery';
 $(document).ready(function onDocumentReady() {
 
     var $users = $('.users');
-    $users.eq(0).addClass('active'); 
+    $users.eq(0).addClass('active');
 
     // Змінює фон при кліку 
     $users.on('click', function () {
@@ -22,7 +22,7 @@ $(document).ready(function onDocumentReady() {
     var $input = $('input');
     $input.on('input', function () {
         var $inptuVal = $input.val();
-        console.log($input.val());
+
         $usersNames.each(function (index, element) {
             var $element = $(element);
             var $elementName = $element.text(); // names of users
@@ -36,27 +36,69 @@ $(document).ready(function onDocumentReady() {
         });
     });
 
+    //////////////////////////////////////////////////////////
+     // i am
+    //  var myContainer = 'message-window__I-am-container';
+    //  var myMessageContainer = 'message-window__my-message-container';
+    //  var myMessageText = 'message-window__my-message-text';
+    //  var myImage = 'message-window__my-image';
+    //  var myImageSrc = 'images/myImage.png';
+     // companion 
+     var companionContainer = 'message-window__companion-container';
+     var companionMessageContainer = 'message-window__companion-message-container';
+     var companionMessageText = 'message-window__companion-message-text';
+     var companionImage = 'message-window__companion-image';
+     var companionImageSrc = 'images/darthVader.png';
+ 
+     function getPattern (me, value) {
+         var container;
+         if(me === 'mine') {
+            container = 'message-window__I-am-container';
+             var messageContainer = 'message-window__my-message-container';
+             var messageText = 'message-window__my-message-text';
+             var image = 'message-window__my-image';
+             var imageSrc = 'images/myImage.png';
+         } else if (me === 'companion'){
+             container = companionContainer;
+             var messageContainer = companionMessageContainer;
+             var messageText = companionMessageText;
+             var image = companionImage;
+             var imageSrc = companionImageSrc;
+         } else {
+            container = companionContainer;
+            var messageContainer = companionMessageContainer;
+            var messageText = companionMessageText;
+            var image = companionImage;
+            var imageSrc = 'images/harryPotter.png';
+         }
+ 
+         return '<div class='+ container +'><div class='+ messageContainer +'><span class='+ messageText +'>' + value + '</span></div><img class='+ image +' src='+ imageSrc +' alt=""></div>';
+     };
+    ////////////////////////////////////////////////////
+
     // Відправляє смс 
     var $textArea = $('textarea');
-    var $massageBorder = $('.massage-window__border');
+    var $messageBorder = $('.message-window__border');
     $('button').on('click', function () {
         var textareaVal = $textArea.val();
-        var reverseMassage = textareaVal.split("").reverse().join("");
+        // var reverseMessage = textareaVal.split("").reverse().join("");
+        var patern = getPattern('companion', textareaVal);
+        var jqPatern = $(patern);
 
         if (textareaVal) {
-
-            var myPattern = $('<div class="massage-window__I-am-container"><div class="massage-window__my-massage-container "><span class="massage-window__my-massage-text">' + textareaVal + '</span></div><img class="massage-window__my-image" src="images/myImage.png" alt=""></div>');
-            var companionPatern = $('<div class="massage-window__companion-container"><img class="massage-window__companion-image" src="images/darthVader.png" alt=""><div class="massage-window__companion-massage-container"><span class="massage-window__companion-massage-text">'+ reverseMassage +'</span></div></div>');
-            $massageBorder.prepend(myPattern);
-            $massageBorder.prepend(companionPatern);
+            $messageBorder.prepend(jqPatern);
             $textArea.val('');
         }
+
+        localStorage.setItem('jqPatern', JSON.stringify(jqPatern));
+        var b = localStorage.getItem('jqPatern');
+        b = JSON.parse(b);
+        console.log(b);
+        
     });
 
 
-
-
-
+   
 
 
 
