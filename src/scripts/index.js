@@ -4,9 +4,21 @@ $(document).ready(function onDocumentReady() {
 
     var $users = $('.users');
     var $images = $('img');
-    $users.eq(0).addClass('active');
+    // $users.eq(0).addClass('active');
+
+    
+    localStorage.setItem ('Idelement', '#Chewbacca')        
+    function localActive() {
+        if (localStorage.getItem('Idelement') !== null) {
+            var idChew = localStorage.getItem('Idelement');
+            var $Chewy = $(idChew);
+            $Chewy.addClass('active');
+        }
+    }
+    localActive();
+
     var imageSrcFunction;
-    // Змінює фон при кліку 
+    // Змінює фон при кліку та зберігає src фото
     $users.on('click', function () {
         $(this).addClass('active');
         $users.not(this).removeClass('active');
@@ -18,8 +30,8 @@ $(document).ready(function onDocumentReady() {
                 imageSrcFunction = $element.attr('src');
                 console.log(imageSrcFunction);
             }
-        });   
-                
+        });
+
     });
 
     // Нумерація юзерів
@@ -48,28 +60,28 @@ $(document).ready(function onDocumentReady() {
     });
 
     //////////////////////////////////////////////////////////
-     var companionContainer = 'message-window__companion-container';
-     var companionMessageContainer = 'message-window__companion-message-container';
-     var companionMessageText = 'message-window__companion-message-text';
-     var companionImage = 'message-window__companion-image';
- 
-     function getPattern (me, value) {
-         var container;
-         if(me) {
+    var companionContainer = 'message-window__companion-container';
+    var companionMessageContainer = 'message-window__companion-message-container';
+    var companionMessageText = 'message-window__companion-message-text';
+    var companionImage = 'message-window__companion-image';
+
+    function getPattern(me, value) {
+        var container, messageContainer, messageText, image, imageSrc;
+        if (me) {
             container = 'message-window__I-am-container';
-             messageContainer = 'message-window__my-message-container';
-             messageText = 'message-window__my-message-text';
-             image = 'message-window__my-image';
-             imageSrc = 'images/myImage.png';
-         } else {
-             container = companionContainer;
-             messageContainer = companionMessageContainer;
-             messageText = companionMessageText;
-             image = companionImage;
-             imageSrc = imageSrcFunction;
-         } 
-         return '<div class='+ container +'><div class='+ messageContainer +'><span class='+ messageText +'>' + value + '</span></div><img class='+ image +' src='+ imageSrc +' alt=""></div>';
-     };
+            messageContainer = 'message-window__my-message-container';
+            messageText = 'message-window__my-message-text';
+            image = 'message-window__my-image';
+            imageSrc = 'images/myImage.png';
+        } else {
+            container = companionContainer;
+            messageContainer = companionMessageContainer;
+            messageText = companionMessageText;
+            image = companionImage;
+            imageSrc = imageSrcFunction;
+        }
+        return '<div class=' + container + '><div class=' + messageContainer + '><span class=' + messageText + '>' + value + '</span></div><img class=' + image + ' src=' + imageSrc + ' alt=""></div>';
+    };
     ////////////////////////////////////////////////////
 
     // Відправляє смс 
@@ -85,16 +97,10 @@ $(document).ready(function onDocumentReady() {
             $messageBorder.prepend(jqPatern);
             $textArea.val('');
         }
-
-        localStorage.setItem('jqPatern', JSON.stringify(jqPatern));
-        var b = localStorage.getItem('jqPatern');
-        b = JSON.parse(b);
-        console.log(b);
-        
     });
 
 
-   
+
 
 
 
