@@ -4,36 +4,35 @@ $(document).ready(function onDocumentReady() {
 
     var $users = $('.users');
     var $images = $('img');
-    // $users.eq(0).addClass('active');
-
+   
+    var sms = []; // масив для збереження смс та передачу їх в localStorage
     
-    localStorage.setItem ('Idelement', '#Chewbacca')        
-    function localActive() {
-        if (localStorage.getItem('Idelement') !== null) {
-            var idChew = localStorage.getItem('Idelement');
-            var $Chewy = $(idChew);
-            $Chewy.addClass('active');
-        } else {
-            $users.eq(0).addClass('active');
-        }
-    }
-    localActive();
+    // var idUsers = $('#Darth_Vader').attr('id');
+    // localStorage.setItem('idDarth', idUsers);
+    // console.log(idUsers);
+    
+    // // localStorage.setItem ('Idelement', '#Chewbacca')        
+    // function localActive() {
+    //     if (localStorage.getItem('idDarth') !== null) {
+    //         var idSomebody = localStorage.getItem('idDarth');
+    //         var $Somebody = $('#' + idSomebody);
+    //         console.log(idSomebody);
+    //         $Somebody.addClass('active');
+    //     } else {
+    //         $users.eq(0).addClass('active');
+    //     }
+    // }
+    // localActive();
 
-    var imageSrcFunction;
+    var imageSrcOn;
     // Змінює фон при кліку та зберігає src фото
     $users.on('click', function () {
         $(this).addClass('active');
         $users.not(this).removeClass('active');
 
-        $images.each(function (index, element) {
-            var $element = $(element);
-            var $parent = $element.closest('.users');
-            if ($parent.hasClass('active')) {
-                imageSrcFunction = $element.attr('src');
-                console.log(imageSrcFunction);
-            }
-        });
-
+        var $imgFound = $(this).find($('.users-image'));
+        imageSrcOn = $imgFound.attr('src');
+        console.log(imageSrcOn)
     });
 
     // Нумерація юзерів
@@ -80,7 +79,7 @@ $(document).ready(function onDocumentReady() {
             messageContainer = companionMessageContainer;
             messageText = companionMessageText;
             image = companionImage;
-            imageSrc = imageSrcFunction;
+            imageSrc = imageSrcOn;
         }
         return '<div class=' + container + '><div class=' + messageContainer + '><span class=' + messageText + '>' + value + '</span></div><img class=' + image + ' src=' + imageSrc + ' alt=""></div>';
     };
@@ -99,6 +98,8 @@ $(document).ready(function onDocumentReady() {
             $messageBorder.prepend(jqPatern);
             $textArea.val('');
         }
+        sms.push(textareaVal);
+        console.log(sms);
     });
 
 
