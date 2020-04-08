@@ -1,16 +1,50 @@
 import $ from 'jquery';
 
 $(document).ready(function onDocumentReady() {
+    var $textArea = $('textarea');
+    var $messageBorder = $('.message-window__border');
 
     var $users = $('.users');
-    var $images = $('img');
-   
-    var sms = []; // масив для збереження смс та передачу їх в localStorage
-    
-    // var idUsers = $('#Darth_Vader').attr('id');
+
+    var smsArray = []; // масив для збереження смс та передачу їх в localStorage
+    // var data = JSON.parse(localStorage.getItem('items'));
+    function getSms() {
+        var logItem = localStorage.getItem('items');
+
+        if (logItem) {
+            var patern;
+            patern = JSON.parse(logItem);
+            console.log(logItem)
+            console.log(patern);
+        } if (patern) {
+            // $messageBorder.prepend(patern);
+            var first = getPattern('', patern[0]);
+            var jqFirst = $(first);
+
+            var second = getPattern('', patern[1]);
+            var jqSecond = $(second);
+
+            // for (var i = 0; i < first.length; i++) {
+            //     first[i].after(second[i]);
+            // }
+
+            if (patern[0]) {
+                $messageBorder.prepend(jqFirst);
+                console.log(0)
+            } 
+            if (patern[1]) {
+                $messageBorder.prepend(jqSecond);
+                console.log(1)
+            }
+
+        }
+    }
+
+
+    // var idUsers = $('this').attr('id');
     // localStorage.setItem('idDarth', idUsers);
-    // console.log(idUsers);
-    
+
+
     // // localStorage.setItem ('Idelement', '#Chewbacca')        
     // function localActive() {
     //     if (localStorage.getItem('idDarth') !== null) {
@@ -24,15 +58,14 @@ $(document).ready(function onDocumentReady() {
     // }
     // localActive();
 
-    var imageSrcOn;
     // Змінює фон при кліку та зберігає src фото
+    var imageSrcOn;
     $users.on('click', function () {
         $(this).addClass('active');
         $users.not(this).removeClass('active');
 
-        var $imgFound = $(this).find($('.users-image'));
+        var $imgFound = $(this).find('.users-image');
         imageSrcOn = $imgFound.attr('src');
-        console.log(imageSrcOn)
     });
 
     // Нумерація юзерів
@@ -60,7 +93,7 @@ $(document).ready(function onDocumentReady() {
         });
     });
 
-    //////////////////////////////////////////////////////////
+    // Створення шаблону контейнера для відправлення смс від мене та компаньйона
     var companionContainer = 'message-window__companion-container';
     var companionMessageContainer = 'message-window__companion-message-container';
     var companionMessageText = 'message-window__companion-message-text';
@@ -81,16 +114,15 @@ $(document).ready(function onDocumentReady() {
             image = companionImage;
             imageSrc = imageSrcOn;
         }
-        return '<div class=' + container + '><div class=' + messageContainer + '><span class=' + messageText + '>' + value + '</span></div><img class=' + image + ' src=' + imageSrc + ' alt=""></div>';
-    };
-    ////////////////////////////////////////////////////
+        smsArray.push(imageSrc);
 
+        return '<div class=' + container + '><div class=' + messageContainer + '><span class=' + messageText + '>' + value + '</span></div><img class=' + image + ' src=' + imageSrc + ' alt=""></div>';
+    }
+    getSms();
     // Відправляє смс 
-    var $textArea = $('textarea');
-    var $messageBorder = $('.message-window__border');
+
     $('button').on('click', function () {
         var textareaVal = $textArea.val();
-        // var reverseMessage = textareaVal.split("").reverse().join("");
         var patern = getPattern('', textareaVal);
         var jqPatern = $(patern);
 
@@ -98,9 +130,12 @@ $(document).ready(function onDocumentReady() {
             $messageBorder.prepend(jqPatern);
             $textArea.val('');
         }
-        sms.push(textareaVal);
-        console.log(sms);
+        smsArray.push(textareaVal);
+        localStorage.setItem('items', JSON.stringify(smsArray));
+        console.log(smsArray);
     });
+
+
 
 
 
