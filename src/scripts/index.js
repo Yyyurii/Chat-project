@@ -3,12 +3,23 @@ import $ from 'jquery';
 $(document).ready(function onDocumentReady() {
 
     var $users = $('.users');
+    var $images = $('img');
     $users.eq(0).addClass('active');
-
+    var imageSrcFunction;
     // Змінює фон при кліку 
     $users.on('click', function () {
         $(this).addClass('active');
         $users.not(this).removeClass('active');
+
+        $images.each(function (index, element) {
+            var $element = $(element);
+            var $parent = $element.closest('.users');
+            if ($parent.hasClass('active')) {
+                imageSrcFunction = $element.attr('src');
+                console.log(imageSrcFunction);
+            }
+        });   
+                
     });
 
     // Нумерація юзерів
@@ -37,41 +48,26 @@ $(document).ready(function onDocumentReady() {
     });
 
     //////////////////////////////////////////////////////////
-     // i am
-    //  var myContainer = 'message-window__I-am-container';
-    //  var myMessageContainer = 'message-window__my-message-container';
-    //  var myMessageText = 'message-window__my-message-text';
-    //  var myImage = 'message-window__my-image';
-    //  var myImageSrc = 'images/myImage.png';
-     // companion 
      var companionContainer = 'message-window__companion-container';
      var companionMessageContainer = 'message-window__companion-message-container';
      var companionMessageText = 'message-window__companion-message-text';
      var companionImage = 'message-window__companion-image';
-     var companionImageSrc = 'images/darthVader.png';
  
      function getPattern (me, value) {
          var container;
-         if(me === 'mine') {
+         if(me) {
             container = 'message-window__I-am-container';
-             var messageContainer = 'message-window__my-message-container';
-             var messageText = 'message-window__my-message-text';
-             var image = 'message-window__my-image';
-             var imageSrc = 'images/myImage.png';
-         } else if (me === 'companion'){
-             container = companionContainer;
-             var messageContainer = companionMessageContainer;
-             var messageText = companionMessageText;
-             var image = companionImage;
-             var imageSrc = companionImageSrc;
+             messageContainer = 'message-window__my-message-container';
+             messageText = 'message-window__my-message-text';
+             image = 'message-window__my-image';
+             imageSrc = 'images/myImage.png';
          } else {
-            container = companionContainer;
-            var messageContainer = companionMessageContainer;
-            var messageText = companionMessageText;
-            var image = companionImage;
-            var imageSrc = 'images/harryPotter.png';
-         }
- 
+             container = companionContainer;
+             messageContainer = companionMessageContainer;
+             messageText = companionMessageText;
+             image = companionImage;
+             imageSrc = imageSrcFunction;
+         } 
          return '<div class='+ container +'><div class='+ messageContainer +'><span class='+ messageText +'>' + value + '</span></div><img class='+ image +' src='+ imageSrc +' alt=""></div>';
      };
     ////////////////////////////////////////////////////
@@ -82,7 +78,7 @@ $(document).ready(function onDocumentReady() {
     $('button').on('click', function () {
         var textareaVal = $textArea.val();
         // var reverseMessage = textareaVal.split("").reverse().join("");
-        var patern = getPattern('companion', textareaVal);
+        var patern = getPattern('', textareaVal);
         var jqPatern = $(patern);
 
         if (textareaVal) {
