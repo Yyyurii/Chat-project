@@ -13,6 +13,8 @@ $(document).ready(function onDocumentReady() {
             var idChew = localStorage.getItem('Idelement');
             var $Chewy = $(idChew);
             $Chewy.addClass('active');
+        } else {
+            $users.eq(0).addClass('active');
         }
     }
     localActive();
