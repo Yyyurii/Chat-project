@@ -1,13 +1,9 @@
 import $ from 'jquery';
 
 $(document).ready(function onDocumentReady() {
-
-    var object = {
-        'Chewbacka': 'img.png',
-        'Darth_Vader': 'img2'
-    };
-    console.log(object.Chewbacka);
-    var asd = 'Darth_Vader';
+    
+    var dataRow = [];
+    var obj = {};
 
     var $textArea = $('textarea');
     var $messageBorder = $('.message-window__border');
@@ -15,54 +11,41 @@ $(document).ready(function onDocumentReady() {
     var $users = $('.users');
 
     var smsArray = []; // масив для збереження смс та передачу їх в localStorage
-    var imageArray = [];
+
     function getSms() {
         var data = JSON.parse(localStorage.getItem('items'));
-        var dataImg = JSON.parse(localStorage.getItem('imgSrc'));
-        console.log('data', data)
-        console.log('dataImg', dataImg)
-        if ((data) && (dataImg)) {
+        var dataObj = JSON.parse(localStorage.getItem('objImage'));
+        if ((data)) {
             for (var index = 0; index < data.length; index++)
 
-                var saveMessages = getPattern('', data[index], object[asd]);
-                // var $pattern = $(saveMessages);
-                $messageBorder.prepend(saveMessages);
-                
-                
+                var saveMessages = getPattern('', data[index], dataObj.element);
+            // var $pattern = $(saveMessages);
+            $messageBorder.prepend(saveMessages);
+            console.log('obj.element', obj.element)
         }
     }
 
-    
-    
-    // var idUsers = $('this').attr('id');
-    // localStorage.setItem('idDarth', idUsers);
-
-
-    // // localStorage.setItem ('Idelement', '#Chewbacca')        
-    // function localActive() {
-    //     if (localStorage.getItem('idDarth') !== null) {
-    //         var idSomebody = localStorage.getItem('idDarth');
-    //         var $Somebody = $('#' + idSomebody);
-    //         console.log(idSomebody);
-    //         $Somebody.addClass('active');
-    //     } else {
-    //         $users.eq(0).addClass('active');
-    //     }
-    // }
-    // localActive();
-
     // Змінює фон при кліку та зберігає src фото
     var imageSrcOn;
+    var idFound;
     $users.on('click', function () {
         $(this).addClass('active');
         $users.not(this).removeClass('active');
 
         var $imgFound = $(this).find('.users-image');
         imageSrcOn = $imgFound.attr('src');
-        imageArray.push(imageSrcOn);
-        localStorage.setItem('imgSrc', JSON.stringify(imageArray));
-        console.log('imageArray', imageArray)
+        var idFound = $('.active').attr('id');
         
+        dataRow.push(idFound); 
+          
+        $(dataRow).each(function (element, index) {
+            element = dataRow;
+            index = imageSrcOn;
+            // console.log('index', index)
+            obj[element] = index;
+            console.log('obj in each', obj)
+            localStorage.setItem('objImage', JSON.stringify(obj));
+        });        
     });
 
     // Нумерація юзерів
@@ -97,7 +80,7 @@ $(document).ready(function onDocumentReady() {
     var companionImage = 'message-window__companion-image';
 
     function getPattern(me, value, imageSrc) {
-        var container, messageContainer, messageText, image;  //imageSrc;
+        var container, messageContainer, messageText, image; //imageSrc;
         if (me) {
             container = 'message-window__I-am-container';
             messageContainer = 'message-window__my-message-container';
@@ -129,7 +112,6 @@ $(document).ready(function onDocumentReady() {
         }
         smsArray.push(textareaVal);
         localStorage.setItem('items', JSON.stringify(smsArray));
-        console.log('smsArray in the end', smsArray)
     });
 
 
