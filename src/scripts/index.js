@@ -1,69 +1,76 @@
 import $ from 'jquery';
 
 $(document).ready(function onDocumentReady() {
-    
-    var dataRow = [];
-    var obj = {};
+    let companionContainer = 'message-window__companion-container';
+    let companionMessageContainer = 'message-window__companion-message-container';
+    let companionMessageText = 'message-window__companion-message-text';
+    let companionImage = 'message-window__companion-image';
+    let imageSrcOn;
+    let idFound;
 
-    var $textArea = $('textarea');
-    var $messageBorder = $('.message-window__border');
+    let dataRow = [];
+    console.log('dataRow', dataRow);
+    let obj = {};
+    console.log('obj', obj)
 
-    var $users = $('.users');
+    let $textArea = $('textarea');
+    let $messageBorder = $('.message-window__border');
+    let $users = $('.users');
 
-    var smsArray = []; // масив для збереження смс та передачу їх в localStorage
+    let smsArray = []; // масив для збереження смс та передачу їх в localStorage
 
     function getSms() {
-        var data = JSON.parse(localStorage.getItem('items'));
-        var dataObj = JSON.parse(localStorage.getItem('objImage'));
-        if ((data)) {
-            for (var index = 0; index < data.length; index++)
+        let data = JSON.parse(localStorage.getItem('smsText'));
+        console.log('data', data);
+        let dataObj = JSON.parse(localStorage.getItem('objImage'));
+        console.log('dataObj', dataObj);
 
-                var saveMessages = getPattern('', data[index], dataObj.element);
-            // var $pattern = $(saveMessages);
-            $messageBorder.prepend(saveMessages);
-            console.log('obj.element', obj.element)
+        if (data) {
+            for (let index = 0; index < data.length ; index++) {
+                let template = getPattern('', data[index], 'images/darthVader.png');
+                let $template = $(template);
+                $messageBorder.prepend($template);
+            }
         }
     }
 
     // Змінює фон при кліку та зберігає src фото
-    var imageSrcOn;
-    var idFound;
+ 
     $users.on('click', function () {
         $(this).addClass('active');
         $users.not(this).removeClass('active');
 
-        var $imgFound = $(this).find('.users-image');
+        let $imgFound = $(this).find('.users-image');
         imageSrcOn = $imgFound.attr('src');
-        var idFound = $('.active').attr('id');
-        
-        dataRow.push(idFound); 
-          
-        $(dataRow).each(function (element, index) {
-            element = dataRow;
+        idFound = $('.active').attr('id');
+
+        dataRow.push(idFound);
+
+        $(dataRow).each( (element, index) => {
+            element = idFound;
             index = imageSrcOn;
-            // console.log('index', index)
             obj[element] = index;
-            console.log('obj in each', obj)
+            console.log('obj in each', obj);
             localStorage.setItem('objImage', JSON.stringify(obj));
-        });        
+        });
     });
 
     // Нумерація юзерів
-    var $usersNames = $('.users-name');
-    $usersNames.each(function (i) {
-        var number = i + 1 + '. ';
-        $(this).prepend(number);
-    });
+    let $usersNames = $('.users-name');
+    // $usersNames.each(function (i) {
+    //     var number = i + 1 + '. ';
+    //     $(this).prepend(number);
+    // });
 
-    // Search
-    var $input = $('input');
-    $input.on('input', function () {
-        var $inptuVal = $input.val();
+    // Search 
+    let $input = $('input');
+    $input.on('input', () => {
+        let $inptuVal = $input.val();
 
         $usersNames.each(function (index, element) {
-            var $element = $(element);
-            var $elementName = $element.text(); // names of users
-            var $parent = $element.closest('.users');
+            let $element = $(element);
+            let $elementName = $element.text(); // names of users
+            let $parent = $element.closest('.users');
             if ($elementName.includes($inptuVal)) {
                 $parent.show();
             } else {
@@ -74,13 +81,9 @@ $(document).ready(function onDocumentReady() {
     });
 
     // Створення шаблону контейнера для відправлення смс від мене та компаньйона
-    var companionContainer = 'message-window__companion-container';
-    var companionMessageContainer = 'message-window__companion-message-container';
-    var companionMessageText = 'message-window__companion-message-text';
-    var companionImage = 'message-window__companion-image';
 
     function getPattern(me, value, imageSrc) {
-        var container, messageContainer, messageText, image; //imageSrc;
+        let container, messageContainer, messageText, image; //imageSrc;
         if (me) {
             container = 'message-window__I-am-container';
             messageContainer = 'message-window__my-message-container';
@@ -92,29 +95,25 @@ $(document).ready(function onDocumentReady() {
             messageContainer = companionMessageContainer;
             messageText = companionMessageText;
             image = companionImage;
-            imageSrc = imageSrcOn;
         }
-
-
-        return '<div class=' + container + '><div class=' + messageContainer + '><span class=' + messageText + '>' + value + '</span></div><img class=' + image + ' src=' + imageSrc + ' alt=""></div>';
+        return `<div class="${container}"><div class="${messageContainer}"><span class="${messageText}">"${value}"</span></div><img class="${image}"src="${imageSrc}"alt=""></div>`;
     }
 
     // Відправляє смс 
-    getSms();
-    $('button').on('click', function () {
-        var textareaVal = $textArea.val();
-        var patern = getPattern('', textareaVal, imageSrcOn);
-        var jqPatern = $(patern);
+    $('button').on('click', () => {
+        let textareaVal = $textArea.val();
+        let patern = getPattern('', textareaVal, imageSrcOn);
+        let jqPatern = $(patern);
 
         if (textareaVal) {
             $messageBorder.prepend(jqPatern);
             $textArea.val('');
         }
         smsArray.push(textareaVal);
-        localStorage.setItem('items', JSON.stringify(smsArray));
+        localStorage.setItem('smsText', JSON.stringify(smsArray));
     });
 
-
+    getSms();
 
 
 
