@@ -6,53 +6,33 @@ $(document).ready(function onDocumentReady() {
     let companionMessageText = 'message-window__companion-message-text';
     let companionImage = 'message-window__companion-image';
     let imageSrcOn;
-    let idFound;
+    let patern;
 
     let dataRow = [];
-    console.log('dataRow', dataRow);
-    let obj = {};
-    console.log('obj', obj)
 
     let $textArea = $('textarea');
     let $messageBorder = $('.message-window__border');
     let $users = $('.users');
 
-    let smsArray = []; // масив для збереження смс та передачу їх в localStorage
-
     function getSms() {
-        let data = JSON.parse(localStorage.getItem('smsText'));
-        console.log('data', data);
-        let dataObj = JSON.parse(localStorage.getItem('objImage'));
-        console.log('dataObj', dataObj);
+        let data = JSON.parse(localStorage.getItem('localSms'));
+        console.log('data', data)
+        let jqData = $(data);
 
-        if (data) {
-            for (let index = 0; index < data.length ; index++) {
-                let template = getPattern('', data[index], 'images/darthVader.png');
-                let $template = $(template);
-                $messageBorder.prepend($template);
-            }
-        }
-    }
+        for (let index = 0; index < data.length; index++) {
+            $messageBorder.prepend(jqData[index]);
+        };
+    };
 
     // Змінює фон при кліку та зберігає src фото
- 
+
     $users.on('click', function () {
         $(this).addClass('active');
         $users.not(this).removeClass('active');
 
         let $imgFound = $(this).find('.users-image');
         imageSrcOn = $imgFound.attr('src');
-        idFound = $('.active').attr('id');
 
-        dataRow.push(idFound);
-
-        $(dataRow).each( (element, index) => {
-            element = idFound;
-            index = imageSrcOn;
-            obj[element] = index;
-            console.log('obj in each', obj);
-            localStorage.setItem('objImage', JSON.stringify(obj));
-        });
     });
 
     // Нумерація юзерів
@@ -82,8 +62,8 @@ $(document).ready(function onDocumentReady() {
 
     // Створення шаблону контейнера для відправлення смс від мене та компаньйона
 
-    function getPattern(me, value, imageSrc) {
-        let container, messageContainer, messageText, image; //imageSrc;
+    function getPattern(me, value) {
+        let container, messageContainer, messageText, image, imageSrc;
         if (me) {
             container = 'message-window__I-am-container';
             messageContainer = 'message-window__my-message-container';
@@ -95,22 +75,24 @@ $(document).ready(function onDocumentReady() {
             messageContainer = companionMessageContainer;
             messageText = companionMessageText;
             image = companionImage;
+            imageSrc = imageSrcOn;
         }
+
         return `<div class="${container}"><div class="${messageContainer}"><span class="${messageText}">"${value}"</span></div><img class="${image}"src="${imageSrc}"alt=""></div>`;
     }
 
     // Відправляє смс 
     $('button').on('click', () => {
         let textareaVal = $textArea.val();
-        let patern = getPattern('', textareaVal, imageSrcOn);
+        patern = getPattern('', textareaVal);
         let jqPatern = $(patern);
-
+        dataRow.push(patern);
+        localStorage.setItem('localSms', JSON.stringify(dataRow));
+        
         if (textareaVal) {
             $messageBorder.prepend(jqPatern);
             $textArea.val('');
         }
-        smsArray.push(textareaVal);
-        localStorage.setItem('smsText', JSON.stringify(smsArray));
     });
 
     getSms();
