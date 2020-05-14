@@ -13,15 +13,20 @@ $(document).ready(function onDocumentReady() {
     let $textArea = $('textarea');
     let $messageBorder = $('.message-window__border');
     let $users = $('.users');
+    let $usersSidebar = $('.users-sidebar');
+    let $usersNames = $('.users-name');
+    let $headerName = $('.header-name');
 
     function getSms() {
         let data = JSON.parse(localStorage.getItem('localSms'));
-        console.log('data', data)
-        let jqData = $(data);
+        
+        if (data) {
+            dataRow.push(data);
 
-        for (let index = 0; index < data.length; index++) {
-            $messageBorder.prepend(jqData[index]);
-        };
+            for (let index = 0; index < data.length; index++) {
+                $messageBorder.prepend(data[index]);
+            };
+        }
     };
 
     // Змінює фон при кліку та зберігає src фото
@@ -33,10 +38,14 @@ $(document).ready(function onDocumentReady() {
         let $imgFound = $(this).find('.users-image');
         imageSrcOn = $imgFound.attr('src');
 
+        if ($(window).width() < 900) {
+
+            $usersSidebar.css({'display' : 'none'});
+        }
     });
 
     // Нумерація юзерів
-    let $usersNames = $('.users-name');
+    
     // $usersNames.each(function (i) {
     //     var number = i + 1 + '. ';
     //     $(this).prepend(number);
@@ -78,28 +87,32 @@ $(document).ready(function onDocumentReady() {
             imageSrc = imageSrcOn;
         }
 
-        return `<div class="${container}"><div class="${messageContainer}"><span class="${messageText}">"${value}"</span></div><img class="${image}"src="${imageSrc}"alt=""></div>`;
+        return `<div class="${container}"><div class="${messageContainer}"><span class="${messageText}">${value}</span></div><img class="${image}" src="${imageSrc}" alt=""/></div>`;
     }
 
     // Відправляє смс 
     $('button').on('click', () => {
         let textareaVal = $textArea.val();
-        patern = getPattern('', textareaVal);
+        patern = getPattern('me', textareaVal);
         let jqPatern = $(patern);
+        console.log('patern', patern);
         dataRow.push(patern);
         localStorage.setItem('localSms', JSON.stringify(dataRow));
-        
+
         if (textareaVal) {
             $messageBorder.prepend(jqPatern);
             $textArea.val('');
         }
     });
-
     getSms();
 
-
-
-
+    $('.chatsBtn').on('click', () => {
+        if ($usersSidebar.css('display') === 'none') {
+            $usersSidebar.css({ 'display': 'flex' });
+        } else {
+            $usersSidebar.css({'display' : 'none'});
+        }   
+    });
 
 
 
