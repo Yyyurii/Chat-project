@@ -225,6 +225,7 @@ img {
         background-position: 2% 50%;
         background-size: 15px 15px;
         padding-left: 25px;
+        border: 1px solid silver;
     }
 }
 
@@ -269,13 +270,14 @@ img {
     border-radius: 10px;
     border-bottom-left-radius: 0px;
     border-top-left-radius: 0px;
+    overflow: hidden;
 
     @media (max-width:900px) {
         max-width: 900px;
         max-height: 600px;
         height: 100%;
-        border-bottom-left-radius: 10px;
-        border-top-left-radius: 10px;
+        // border-bottom-left-radius: 10px;
+        // border-top-left-radius: 10px;
         display: flex;
         flex-direction: column;
     }
@@ -301,7 +303,7 @@ img {
         border-radius: 5px;
         width: 100%;
         margin-left: 15px;
-        padding: 15px 0px 5px 10px;
+        padding: 17px 0px 5px 10px;
         font-size: 14px;
         resize: none;
     }
@@ -441,6 +443,8 @@ img {
 
 .headerImg {
     border-radius: 50%;
+    width: 50px;
+    height: 50px;
 }
 
 

@@ -16,10 +16,16 @@ $(document).ready(function onDocumentReady() {
     let $usersSidebar = $('.users-sidebar');
     let $usersNames = $('.users-name');
     let $headerName = $('.header-name');
+    let nameFound;
+
+    let fun = () => {
+        $('.users:first').addClass('active');
+    }
+    fun();
 
     function getSms() {
         let data = JSON.parse(localStorage.getItem('localSms'));
-        
+
         if (data) {
             dataRow.push(data);
 
@@ -32,20 +38,27 @@ $(document).ready(function onDocumentReady() {
     // Змінює фон при кліку та зберігає src фото
 
     $users.on('click', function () {
+
         $(this).addClass('active');
         $users.not(this).removeClass('active');
 
         let $imgFound = $(this).find('.users-image');
         imageSrcOn = $imgFound.attr('src');
+        let $nameFound = $(this).find($usersNames);
+        let activeImg = $('.headerImg').attr('src', imageSrcOn);
+        console.log('activeImg', activeImg);
+        nameFound = $nameFound.text();
+        let naming = $headerName.text(nameFound);
+
 
         if ($(window).width() < 900) {
 
-            $usersSidebar.css({'display' : 'none'});
+            $usersSidebar.css({ 'display': 'none' });
         }
     });
 
     // Нумерація юзерів
-    
+
     // $usersNames.each(function (i) {
     //     var number = i + 1 + '. ';
     //     $(this).prepend(number);
@@ -91,7 +104,7 @@ $(document).ready(function onDocumentReady() {
     }
 
     // Відправляє смс 
-    $('button').on('click', () => {
+    $('.sendBtn').on('click', () => {
         let textareaVal = $textArea.val();
         patern = getPattern('me', textareaVal);
         let jqPatern = $(patern);
@@ -110,8 +123,8 @@ $(document).ready(function onDocumentReady() {
         if ($usersSidebar.css('display') === 'none') {
             $usersSidebar.css({ 'display': 'flex' });
         } else {
-            $usersSidebar.css({'display' : 'none'});
-        }   
+            $usersSidebar.css({ 'display': 'none' });
+        }
     });
 
 
