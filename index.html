@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="950">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>gulp-template</title>
+<link rel="stylesheet" href="css/index.css">
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="chat-window">
+      <div class="users-sidebar">
+        <div class="users-sidebar__input-box">
+          <input class="users-sidebar__input" type="search" placeholder="Search..">
+        </div>
+        <div class="users-sidebar__users">
+          <div class="users" id="Captain_Jack_Sparrow">
+            <img class="users-image" src="images/sparrow.jpg" alt="">
+            <span class="users-name">Captain Jack Sparrow</span>
+          </div>
+          <div class="users" id="Darth_Vader">
+            <img class="users-image" src="images/darthVader.png" alt="">
+            <span class="users-name">Darth Vader</span>
+          </div>
+          <div class="users" id="Chandler_Bing">
+            <img class="users-image" src="images/chendler.png" alt="">
+            <span class="users-name">Chandler Bing</span>
+          </div>
+          <div class="users" id="Chewbacca">
+            <img class="users-image" src="images/chewbacca.png" alt="">
+            <span class="users-name">Chewbacca</span>
+          </div>
+          <div class="users" id="Marshall_Mathers">
+            <img class="users-image" src="images/Eminem.png" alt="">
+            <span class="users-name">Marshall Mathers</span>
+          </div>
+          <div class="users" id="I_am_Groot">
+            <img class="users-image" src="images/groot.png" alt="">
+            <span class="users-name">I am Groot</span>
+          </div>
+          <div class="users" id="Harry_Potter">
+            <img class="users-image" src="images/harryPotter.png" alt="">
+            <span class="users-name">Harry Potter</span>
+          </div>
+          <div class="users" id="Mr_Bean">
+            <img class="users-image" src="images/mrBean.ng.jpg" alt="">
+            <span class="users-name">Mr. Bean</span>
+          </div>
+          <div class="users" id="Hulk">
+            <img class="users-image" src="images/hulk.png" alt="">
+            <span class="users-name">Hulk</span>
+          </div>
+        </div>
+      </div>
+      <div class="message-window">
+        <div class="header">
+          <div class="header__backBtn">
+            <button class="chatsBtn"><p><i class="arrow left"></i>Chats</p></button>
+          </div>
+          <div class="header__userName">
+            <span class="header-name">Captain Jack Sparrow</span>
+          </div>
+          <div class="header__userImg">
+            <img class="headerImg" src="images/sparrow.jpg" alt="Captain_Jack_Sparrow">
+          </div>
+        </div>
+        <div class="message-window__border">
+          <div class="message-window__companion-container random">
+            <img class="message-window__companion-image" src="images/darthVader.png" alt="">
+            <div class="message-window__companion-message-container">
+              <span class="message-window__companion-message-text random-text">Come to the dark side we have cookies... and scissors</span>
+              <span class="random-text">Hi!What's up?</span>
+              <span class="random-text">How are you?</span>
+              <span class="random-text">Can I help you?</span>
+              <span class="random-text">I haven't seen you in a long time</span>
+              <span class="random-text">Today is just magical weather</span>
+              <span class="random-text">This chat needs refinement</span>
+            </div>
+          </div>
+          <div class="message-window__I-am-container random">
+            <img class="message-window__my-image" src="images/myImage.png" alt="">
+            <div class="message-window__my-message-container ">
+              <span class="message-window__my-message-text">Guys, I'm with you</span>
+            </div>            
+          </div>
+        </div>
+        <div class="message-window__entry-field">
+          <textarea type="text" class="message-window__textarea" placeholder="Type some mesagge here.."></textarea>
+          <button class="message-window__button sendBtn"><img src="images/sendIcon.png" alt="sendIcon"
+              class="send-icon"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/index.min.js"></script>
+</body>
+
+</html>
