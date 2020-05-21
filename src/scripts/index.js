@@ -20,6 +20,9 @@ $(document).ready(function onDocumentReady() {
 
     let fun = () => {
         $('.users:first').addClass('active');
+
+        let $imgFound = $('.users:first').find('.users-image');
+        imageSrcOn = $imgFound.attr('src');
     }
     fun();
 
@@ -46,7 +49,6 @@ $(document).ready(function onDocumentReady() {
         imageSrcOn = $imgFound.attr('src');
         let $nameFound = $(this).find($usersNames);
         let activeImg = $('.headerImg').attr('src', imageSrcOn);
-        console.log('activeImg', activeImg);
         nameFound = $nameFound.text();
         let naming = $headerName.text(nameFound);
 
@@ -115,17 +117,17 @@ $(document).ready(function onDocumentReady() {
         if (textareaVal) {
             $messageBorder.prepend(jqPatern);
             $textArea.val('');
-            randomAnswer();
+            setTimeout(randomAnswer, 2000);
         }
     });
     getSms();
 
     $('.chatsBtn').on('click', () => {
 
-        if ($(window).width() < 767) {  
+        if ($(window).width() < 767) {
             $('.message-window').css({ 'display': 'none' });
         }
-
+        
         if ($usersSidebar.css('display') === 'none') {
             $usersSidebar.css({ 'display': 'flex' });
         } else {
@@ -135,17 +137,18 @@ $(document).ready(function onDocumentReady() {
 
     function randomAnswer() {
         let things = $('.random-text');
-        let thingsText = $(things[Math.floor(Math.random()*things.length)]).text();
-        
+        let thingsText = $(things[Math.floor(Math.random() * things.length)]).text();
+
         let tempalate = getPattern('', thingsText);
         let jqTempalate = $(tempalate);
         $messageBorder.prepend(jqTempalate);
 
         dataRow.push(tempalate);
         localStorage.setItem('localSms', JSON.stringify(dataRow));
+
     }
 
-    
+
 
 
 
