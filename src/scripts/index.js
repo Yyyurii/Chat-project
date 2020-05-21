@@ -107,6 +107,7 @@ $(document).ready(function onDocumentReady() {
     }
 
     // Відправляє смс 
+
     $('.sendBtn').on('click', () => {
         let textareaVal = $textArea.val();
         patern = getPattern('me', textareaVal);
@@ -127,7 +128,7 @@ $(document).ready(function onDocumentReady() {
         if ($(window).width() < 767) {
             $('.message-window').css({ 'display': 'none' });
         }
-        
+
         if ($usersSidebar.css('display') === 'none') {
             $usersSidebar.css({ 'display': 'flex' });
         } else {
