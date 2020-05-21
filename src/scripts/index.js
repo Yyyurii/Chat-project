@@ -109,14 +109,13 @@ $(document).ready(function onDocumentReady() {
         let textareaVal = $textArea.val();
         patern = getPattern('me', textareaVal);
         let jqPatern = $(patern);
-        console.log('patern', patern);
         dataRow.push(patern);
         localStorage.setItem('localSms', JSON.stringify(dataRow));
 
         if (textareaVal) {
-            // $('.message-window__I-am-container').css({ 'display': 'flex' });
             $messageBorder.prepend(jqPatern);
             $textArea.val('');
+            randomAnswer();
         }
     });
     getSms();
@@ -134,8 +133,19 @@ $(document).ready(function onDocumentReady() {
         }
     });
 
+    function randomAnswer() {
+        let things = $('.random-text');
+        let thingsText = $(things[Math.floor(Math.random()*things.length)]).text();
+        
+        let tempalate = getPattern('', thingsText);
+        let jqTempalate = $(tempalate);
+        $messageBorder.prepend(jqTempalate);
 
+        dataRow.push(tempalate);
+        localStorage.setItem('localSms', JSON.stringify(dataRow));
+    }
 
+    
 
 
 
