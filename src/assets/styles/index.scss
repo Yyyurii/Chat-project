@@ -188,15 +188,15 @@ img {
     border-radius: 10px;
     display: flex;
     margin: 0 20px;
+    border: 1px solid silver;
 }
 
 .users-sidebar {
     background-color: #F3F4F5;
     max-width: 300px;
     width: 100%;
-    border: 1px solid;
+    border-right: 1px solid silver;
     border-radius: 10px;
-    border-right: none;
     border-bottom-right-radius: 0px;
     border-top-right-radius: 0px;
     display: flex;
@@ -208,6 +208,13 @@ img {
 
     @media (max-width:900px) {
         display: none;
+    }
+
+    @media (max-width:768px) {
+        display: flex;
+        max-width: 100%;
+        border-bottom-right-radius: 10px;
+        border-top-right-radius: 10px;
     }
 
     &__input-box {
@@ -266,7 +273,6 @@ img {
 .message-window {
     max-width: 650px;
     width: 100%;
-    border: 1px solid;
     border-radius: 10px;
     border-bottom-left-radius: 0px;
     border-top-left-radius: 0px;
@@ -282,8 +288,10 @@ img {
         flex-direction: column;
     }
 
-    ;
-
+    @media (max-width:768px) {
+        display: none;
+    }
+    
     &__border {
         height: 508px;
         display: flex;
@@ -296,7 +304,7 @@ img {
         height: 90px;
         display: flex;
         align-items: center;
-        border-top: 1px solid;
+        border-top: 1px solid silver;
     }
 
     &__textarea {
@@ -406,32 +414,13 @@ img {
     @media (max-width:900px) {
         display: flex;
         height: 75px;
-        border-bottom: 1px solid;
+        border-bottom: 1px solid silver;
         justify-content: space-between;
         align-items: center;
         padding: 0 20px;
         background-color: #86b4f3;
 
-        // background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-        // background-size: 400% 400%;
-        // animation: gradient 15s ease infinite;
-
         border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-
-        // @keyframes gradient {
-        //     0% {
-        //         background-position: 0% 50%;
-        //     }
-
-        //     50% {
-        //         background-position: 100% 50%;
-        //     }
-
-        //     100% {
-        //         background-position: 0% 50%;
-        //     }
-        // }
     }
 
 
@@ -445,6 +434,7 @@ img {
     border-radius: 50%;
     width: 50px;
     height: 50px;
+    background-color: white;
 }
 
 

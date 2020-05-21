@@ -54,6 +54,7 @@ $(document).ready(function onDocumentReady() {
         if ($(window).width() < 900) {
 
             $usersSidebar.css({ 'display': 'none' });
+            $('.message-window').css({ 'display': 'flex' });
         }
     });
 
@@ -122,6 +123,8 @@ $(document).ready(function onDocumentReady() {
     $('.chatsBtn').on('click', () => {
         if ($usersSidebar.css('display') === 'none') {
             $usersSidebar.css({ 'display': 'flex' });
+        } if ($(window).width() < 768) {
+            $('.message-window').css({ 'display': 'none' });
         } else {
             $usersSidebar.css({ 'display': 'none' });
         }
