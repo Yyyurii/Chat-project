@@ -210,7 +210,7 @@ img {
         display: none;
     }
 
-    @media (max-width:768px) {
+    @media (max-width:767px) {
         display: flex;
         max-width: 100%;
         border-bottom-right-radius: 10px;
@@ -227,11 +227,10 @@ img {
         width: 100%;
         border-radius: 5px;
         font-size: 14px;
-        padding: 6px;
+        padding: 6px 6px 6px 33px;
         background: url(../images/searchIcon.png) no-repeat;
         background-position: 2% 50%;
         background-size: 15px 15px;
-        padding-left: 25px;
         border: 1px solid silver;
     }
 }
@@ -288,16 +287,20 @@ img {
         flex-direction: column;
     }
 
-    @media (max-width:768px) {
+    @media (max-width:767px) {
         display: none;
     }
-    
+
     &__border {
         height: 508px;
         display: flex;
         flex-direction: column-reverse;
         padding: 20px;
         overflow: auto;
+
+        @media (max-width:767px) {
+            padding: 10px;
+        }
     }
 
     &__entry-field {
@@ -323,10 +326,15 @@ img {
         padding-top: 5px;
         border: none;
         background-color: #fff;
+
+        @media (max-width:567px) {
+            margin: 0px;
+        }
     }
 
     &__I-am-container {
         display: flex;
+        // display: none;
         align-items: center;
         justify-content: space-between;
         position: relative;
@@ -342,6 +350,14 @@ img {
         border-radius: 5px;
         margin-left: 85px;
         order: 0;
+        @media (max-width:767px) {
+            min-height: 50px;
+            margin-left: 71px;
+        }
+
+        @media (max-width:567px) {
+            margin-left: 0px;
+        }
     }
 
     &__my-image {
@@ -350,6 +366,11 @@ img {
         border-radius: 6px;
         margin-left: 20px;
         order: 1;
+
+        @media (max-width:767px) {
+            width: 50px;
+            height: 50px;
+        }
     }
 
     &__companion-container {
@@ -360,6 +381,13 @@ img {
         margin-bottom: 15px;
         position: relative;
 
+        @media (max-width:767px) {
+            margin-right: 71px;
+        }
+        
+        @media (max-width:567px) {
+            margin-right: 0px;
+        }
     }
 
     &__companion-message-container {
@@ -370,6 +398,10 @@ img {
         padding: 8px;
         border-radius: 5px;
         order: 1;
+
+        @media (max-width:767px) {
+            min-height: 50px;
+        }
     }
 
     &__companion-image {
@@ -378,6 +410,11 @@ img {
         border-radius: 6px;
         margin-right: 20px;
         order: 0;
+
+        @media (max-width:767px) {
+            width: 50px;
+            height: 50px;
+        }
     }
 }
 
@@ -393,6 +430,9 @@ img {
     bottom: 0;
     top: 0;
     margin: auto;
+    @media (max-width:767px) {
+        right: 62px;
+    }
 }
 
 .message-window__companion-container:before {
@@ -405,6 +445,10 @@ img {
     position: absolute;
     margin: auto;
     left: 75px;
+
+    @media (max-width:767px) {
+        left: 63px;
+    }
 }
 
 .header {

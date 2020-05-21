@@ -114,6 +114,7 @@ $(document).ready(function onDocumentReady() {
         localStorage.setItem('localSms', JSON.stringify(dataRow));
 
         if (textareaVal) {
+            // $('.message-window__I-am-container').css({ 'display': 'flex' });
             $messageBorder.prepend(jqPatern);
             $textArea.val('');
         }
@@ -121,10 +122,13 @@ $(document).ready(function onDocumentReady() {
     getSms();
 
     $('.chatsBtn').on('click', () => {
+
+        if ($(window).width() < 767) {  
+            $('.message-window').css({ 'display': 'none' });
+        }
+
         if ($usersSidebar.css('display') === 'none') {
             $usersSidebar.css({ 'display': 'flex' });
-        } if ($(window).width() < 768) {
-            $('.message-window').css({ 'display': 'none' });
         } else {
             $usersSidebar.css({ 'display': 'none' });
         }
