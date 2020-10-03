@@ -56,7 +56,9 @@ $(document).ready(function onDocumentReady() {
         if ($(window).width() < 900) {
 
             $usersSidebar.css({ 'display': 'none' });
-            $('.message-window').css({ 'display': 'flex' });
+            $('.message-window').css({ 'display': 'block' });
+        } else {
+            usersSidebar.css({ 'display': 'flex' });
         }
     });
 
@@ -134,7 +136,10 @@ $(document).ready(function onDocumentReady() {
         } else {
             $usersSidebar.css({ 'display': 'none' });
         }
+
     });
+
+
 
     function randomAnswer() {
         let things = $('.random-text');

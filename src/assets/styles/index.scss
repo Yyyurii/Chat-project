@@ -189,6 +189,7 @@ img {
     display: flex;
     margin: 0 20px;
     border: 1px solid silver;
+    overflow: hidden;
 }
 
 .users-sidebar {
@@ -463,8 +464,6 @@ img {
         align-items: center;
         padding: 0 20px;
         background-color: #86b4f3;
-
-        border-top-left-radius: 10px;
     }
 
 
