@@ -126,20 +126,26 @@ $(document).ready(function onDocumentReady() {
     getSms();
 
     $('.chatsBtn').on('click', () => {
-
-        if ($(window).width() < 767) {
-            $('.message-window').css({ 'display': 'none' });
-        }
-
         if ($usersSidebar.css('display') === 'none') {
             $usersSidebar.css({ 'display': 'flex' });
         } else {
             $usersSidebar.css({ 'display': 'none' });
         }
-
     });
 
-
+    $( window ).resize(function() {
+        console.log('window')
+        const widthWindow = $(window).width();
+        switch(true) {
+            case widthWindow <= 767:
+                $('.message-window').css({ 'display': 'none' });
+                break;
+            case widthWindow > 767:
+                $('.message-window').css({ 'display': 'block' });
+                $usersSidebar.css({ 'display': 'flex' });
+                break;
+        }
+      });
 
     function randomAnswer() {
         let things = $('.random-text');
@@ -151,7 +157,6 @@ $(document).ready(function onDocumentReady() {
 
         dataRow.push(tempalate);
         localStorage.setItem('localSms', JSON.stringify(dataRow));
-
     }
 
 
